@@ -14,13 +14,13 @@ public class guiReceiptOutput implements ReceiptOutputStrategy {
     public final void outputReceiptHeader(int receiptId, String customerId, String customerName) {
        
         JOptionPane.showMessageDialog( null, receiptId + customerId + customerName);
-        System.exit(0);
+        
     }
 
     @Override
     public final void outputReceiptBody(String receiptBodyContent) {
         JOptionPane.showMessageDialog( null, receiptBodyContent);
-        System.exit(0);
+        
     }
 
     @Override
