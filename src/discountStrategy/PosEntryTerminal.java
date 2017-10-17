@@ -5,7 +5,7 @@ package discountStrategy;
  *
  * @author Mitch
  */
-public class PosEntryTerminal{
+public class PosEntryTerminal implements PosEntryStrategy{
     
     public final static String REQUIRED_MSG = "This is a required field.";
     
@@ -18,6 +18,7 @@ public class PosEntryTerminal{
         setDataStrategy(dataStrategy);
     }
 
+    @Override
     public final void startNewSale(String customerId, DataAccessStrategy dataStrategy, ReceiptOutputStrategy consoleOut, ReceiptOutputStrategy guiOut){
         receipt = new Receipt(customerId, dataStrategy, consoleOut, guiOut);
     }
@@ -29,6 +30,7 @@ public class PosEntryTerminal{
         receipt.addLineItem(productId, qty);
     }
     
+    @Override
     public final void endSaleDisplayReceipt(){
         receipt.displayConsoleReceipt();
         receipt.displayGuiReceipt();
