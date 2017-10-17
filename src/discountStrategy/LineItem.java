@@ -12,6 +12,9 @@ public class LineItem {
    
     private Product product;
     private int qty;
+    private double discountAmtLineTotal;
+    private double costBeforeDiscountLineTotal;
+    private double youSavedLineTotal;
     
     public LineItem(DataAccessStrategy receiptData, String productId, int qty){
         product = receiptData.findProduct(productId);
@@ -19,15 +22,27 @@ public class LineItem {
     }
     
     public final String displayLineItem(){
-        return ("|~" + product.getProductDescription() + " | Quantity: " + qty + "| Unit Price: " + product.getUnitCost() + "| Sale Price: " + getDiscountAmt());
+        return (product.getProductDescription() + product.getUnitCost() + getDiscountAmt() + qty + this.costBeforeDiscountLineTotal + this.discountAmtLineTotal + this.youSavedLineTotal);
     }
     
     public final double getCostBeforeDiscount(){
+        return product.getUnitCost();
+    }
+    
+    public final double getCostBeforeDiscountLineTotal(){
         return product.getUnitCost() * qty;
     }
     
     public final double getDiscountAmt(){
         return product.getDiscountStrategy().getDiscountAmt(product.getUnitCost(), qty);
+    }
+    
+     public final double getDiscountAmtLineTotal(){
+        return getDiscountAmt() * qty;
+    }
+     
+    public final double getYouSavedLineTotal(){
+        return getCostBeforeDiscountLineTotal() - getDiscountAmtLineTotal();
     }
 
     public final int getQty() {
@@ -39,6 +54,18 @@ public class LineItem {
             throw new IllegalArgumentException(REQUIRED_MSG);
         }
         this.qty = qty;
+    }
+
+    public void setDiscountAmtLineTotal(double discountAmtLineTotal) {
+        this.discountAmtLineTotal = discountAmtLineTotal;
+    }
+
+    public void setYouSavedLineTotal(double youSavedLineTotal) {
+        this.youSavedLineTotal = youSavedLineTotal;
+    }
+
+    public void setCostBeforeDiscountLineTotal(double costBeforeDiscountLineTotal) {
+        this.costBeforeDiscountLineTotal = costBeforeDiscountLineTotal;
     }
     
 }

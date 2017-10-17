@@ -27,11 +27,12 @@ public class consoleReceiptOutput implements ReceiptOutputStrategy{
         System.out.println("|    Customer: " + customerName);
         System.out.println("|                                                                            ");
         System.out.println("|                                                                            ");
+        System.out.println("|Product|       |Price|      |QTY.|      |SubTotal|      |You Saved|         ");
     }
 
     @Override
     public final void outputReceiptBody(String receiptBodyContent) {
-        System.out.println("|  " + receiptBodyContent);
+        System.out.println("| " + receiptBodyContent);
     }
 
     @Override
