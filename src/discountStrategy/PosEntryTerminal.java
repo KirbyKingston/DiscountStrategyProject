@@ -30,7 +30,8 @@ public class PosEntryTerminal{
     }
     
     public final void endSaleDisplayReceipt(){
-        receipt.displayReceipt();
+        receipt.displayConsoleReceipt();
+        receipt.displayGuiReceipt();
     }
 
     public final DataAccessStrategy getDataStrategy() {

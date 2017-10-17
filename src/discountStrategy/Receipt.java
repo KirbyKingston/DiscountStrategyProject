@@ -66,7 +66,7 @@ public class Receipt {
     }
     
     
-    public final void displayReceipt(){
+    public final void displayConsoleReceipt(){
         
         consoleOut.outputReceiptHeader(receiptId, customer.getCustomerId(), customer.getCustomerName() + " " + getTransactionTime());
         
@@ -74,6 +74,16 @@ public class Receipt {
             consoleOut.outputReceiptBody(lineItems[i].displayLineItem());
         }
         consoleOut.outputReceiptFooter();
+    }
+    
+    public final void displayGuiReceipt(){
+        
+        guiOut.outputReceiptHeader(receiptId, customer.getCustomerId(), customer.getCustomerName() + " " + getTransactionTime());
+        
+        for (int i = 0; i < lineItems.length; i++){
+            guiOut.outputReceiptBody(lineItems[i].displayLineItem());
+        }
+        guiOut.outputReceiptFooter();
     }
     
     public final int getReceiptId() {
