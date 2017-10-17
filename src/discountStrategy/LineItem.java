@@ -12,9 +12,6 @@ public class LineItem {
    
     private Product product;
     private int qty;
-    private double discountAmtLineTotal;
-    private double costBeforeDiscountLineTotal;
-    private double youSavedLineTotal;
     
     public LineItem(DataAccessStrategy receiptData, String productId, int qty){
         product = receiptData.findProduct(productId);
@@ -22,7 +19,7 @@ public class LineItem {
     }
     
     public final String displayLineItem(){
-        return (product.getProductDescription() + product.getUnitCost() + getDiscountAmt() + qty + this.costBeforeDiscountLineTotal + this.discountAmtLineTotal + this.youSavedLineTotal);
+        return (product.getProductDescription() + product.getUnitCost() + getDiscountAmt() + getDiscountAmtLineTotal() + getYouSavedLineTotal());
     }
     
     public final double getCostBeforeDiscount(){
@@ -54,18 +51,6 @@ public class LineItem {
             throw new IllegalArgumentException(REQUIRED_MSG);
         }
         this.qty = qty;
-    }
-
-    public void setDiscountAmtLineTotal(double discountAmtLineTotal) {
-        this.discountAmtLineTotal = discountAmtLineTotal;
-    }
-
-    public void setYouSavedLineTotal(double youSavedLineTotal) {
-        this.youSavedLineTotal = youSavedLineTotal;
-    }
-
-    public void setCostBeforeDiscountLineTotal(double costBeforeDiscountLineTotal) {
-        this.costBeforeDiscountLineTotal = costBeforeDiscountLineTotal;
     }
     
 }
