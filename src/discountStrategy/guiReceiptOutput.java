@@ -19,8 +19,11 @@ public class guiReceiptOutput implements ReceiptOutputStrategy {
 
     @Override
     public final void outputReceiptBody(String receiptBodyContent) {
+        try{
         JOptionPane.showMessageDialog( null, receiptBodyContent);
-        
+        }catch(IllegalArgumentException iae) {
+        JOptionPane.showMessageDialog(null, iae.getMessage());
+    }
     }
 
     @Override

@@ -21,7 +21,7 @@ public class Receipt {
     private ReceiptOutputStrategy consoleOut;
     private ReceiptOutputStrategy guiOut;
     
-    public Receipt(String customerId, DataAccessStrategy receiptData, ReceiptOutputStrategy consoleOut, ReceiptOutputStrategy guiOut) {
+    public Receipt(String customerId, DataAccessStrategy receiptData, ReceiptOutputStrategy consoleOut, ReceiptOutputStrategy guiOut)throws IllegalArgumentException {
         setReceiptData(receiptData);
         setConsoleOut(consoleOut);
         setGuiOut(guiOut);
@@ -46,7 +46,7 @@ public class Receipt {
         return total;
     }
     
-    public final void addLineItem(final String productId, final int qty){
+    public final void addLineItem(final String productId, final int qty)throws IllegalArgumentException{
         LineItem entryItem = new LineItem(receiptData, productId, qty);
         addToArray(entryItem);
     }

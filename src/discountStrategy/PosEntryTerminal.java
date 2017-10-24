@@ -23,9 +23,9 @@ public class PosEntryTerminal implements PosEntryStrategy{
         receipt = new Receipt(customerId, dataStrategy, consoleOut, guiOut);
     }
     
-    public final void addProductToSale(final String productId, final int qty){
+    public final void addProductToSale(final String productId, final int qty)throws IllegalArgumentException{
         if(productId == null || productId.length() == 0 || qty < 1) {
-            throw new IllegalArgumentException(REQUIRED_MSG);
+            throw new PosEntryError();
         }
         receipt.addLineItem(productId, qty);
     }
@@ -50,7 +50,7 @@ public class PosEntryTerminal implements PosEntryStrategy{
 
     public final void setConsoleOut(ReceiptOutputStrategy consoleOut) {
         if(consoleOut == null) {
-            throw new IllegalArgumentException(REQUIRED_MSG);
+            throw new PosEntryError();
         }
         this.consoleOut = consoleOut;
     }

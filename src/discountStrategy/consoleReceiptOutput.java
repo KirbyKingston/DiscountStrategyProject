@@ -32,7 +32,11 @@ public class consoleReceiptOutput implements ReceiptOutputStrategy{
 
     @Override
     public final void outputReceiptBody(String receiptBodyContent) {
+        try{
         System.out.println("| " + receiptBodyContent);
+        }catch(IllegalArgumentException iae) {
+        System.out.println(iae.getMessage());
+    }
     }
 
     @Override

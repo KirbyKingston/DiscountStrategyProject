@@ -1,6 +1,8 @@
 
 package discountStrategy;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mitch
@@ -13,11 +15,10 @@ public class Startup {
     DataAccessStrategy db = new InMemoryDataAccess();
     ReceiptOutputStrategy consoleOutput = new consoleReceiptOutput();
     ReceiptOutputStrategy guiOutput = new guiReceiptOutput();
+
     
-   
-        
     pos.startNewSale("100", db, consoleOutput, guiOutput);
-    pos.addProductToSale("B205", 2);
+    pos.addProductToSale("B205", 0);
     pos.addProductToSale("B205", 2);
     pos.addProductToSale("B205", 2);
     pos.endSaleDisplayReceipt();
