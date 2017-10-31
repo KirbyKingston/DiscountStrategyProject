@@ -44,7 +44,7 @@ public class PosEntryTerminal implements PosEntryStrategy{
         this.dataStrategy = dataStrategy;
     }
     
-     public final ReceiptOutputStrategy getConsoleOut() {
+    public final ReceiptOutputStrategy getConsoleOut() {
         return consoleOut;
     }
 
